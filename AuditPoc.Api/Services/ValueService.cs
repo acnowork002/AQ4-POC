@@ -31,6 +31,25 @@ namespace AuditPoc.Api.Services
             };
             return employee;
         }
+        
+        public List<Employee> GetAllValues()
+        {
+            var empGet = (from d in this.auditPocContext.Data.AsNoTracking()
+                           select d).ToArray();
+            List<Employee> employees = new List<Employee>();
+            foreach(var x in empGet)
+            {
+                var employee = new Employee()
+                {
+                    Name = x.Name,
+                    Age = x.Age,
+                    EmpNo = x.Empno,
+                    Email = x.Email
+                };
+                employees.Add(employee);
+            }
+            return employees;
+        }
 
         public int SaveValues(Employee employee)
         {

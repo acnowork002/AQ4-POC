@@ -10,6 +10,8 @@ namespace AuditPoc.Api.Interfaces
     {
         Employee GetValues(int id);
 
+        List<Employee> GetAllValues();
+
         int SaveValues(Employee employee);
     }
 }

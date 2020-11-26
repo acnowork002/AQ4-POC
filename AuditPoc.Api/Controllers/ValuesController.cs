@@ -24,8 +24,16 @@ namespace AuditPoc.Api.Controllers
         [ProducesResponseType(200, Type = typeof(Employee))]
         public Employee GetValues(int id)
         {
-            Employee employee = this.valueService.GetValues(id);
+            var employee = this.valueService.GetValues(id);
             return employee;
+        }
+        
+        [HttpGet("GetAllValues")]
+        [ProducesResponseType(200, Type = typeof(List<Employee>))]
+        public List<Employee> GetAllValues()
+        {
+            var employees = this.valueService.GetAllValues();
+            return employees;
         }
         
         [HttpPost("SaveValues")]
